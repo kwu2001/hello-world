@@ -2,9 +2,17 @@ h1, h2 {font-family: 'Oswald';}
 
 p, li {font-family: 'Open Sans';}
 
-li {
+ul {
     list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
     display: inline;
+}
+
+#navbar a {
     margin-left: 70px;
     margin-right: 70px;
 }
