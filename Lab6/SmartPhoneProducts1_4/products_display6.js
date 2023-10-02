@@ -6,11 +6,15 @@ let header_name = "<span style='font-size: 80px; font-weight: bold;'>" + first_n
 
 top_title.innerHTML=(header_name);
 
-//item rotate and rotate 
+//item rotate 
 function changeClassName(element) {
-    element.className = 'item rotate';
-    spins_span.innerHTML = spins++; 
+    if(element.className =='item'){
+        element.className = 'item rotate';
+        spins=spins+1;
+    } 
+
     if(spins<2*hits&&hits<spins){
+        //wins=true;
         over_half=true;
     } else{
         //wins=false;
@@ -18,12 +22,32 @@ function changeClassName(element) {
     win_span.innerHTML = over_half;
     spins_span.innerHTML = spins;
     hit_spin_span.innerHTML=(hits/spins).toFixed(2);
-}
-
+    // -- Winning progress depends on hits/spins
+    let hits_spins_ratio = hits/spins;
+    let progress;
+    
+    if (hits_spins_ratio >= 0.5 && hits<spins) {
+            progress = 'You win!';
+    } else if (hits_spins_ratio >= 0.25) {
+        progress = 'Almost there!';
+    } else if (hits_spins_ratio > 0) {
+        progress = 'On your way!';
+    } else {
+        progress = 'Get going!';
+    }
+    win_span.innerHTML = progress;
+}    
+//item
 function resetClassName(element) {
-    element.className = 'item';
-    hits_span.innerHTML = hits++;
+    if(element.className=='item rotate'){
+        element.className = 'item';
+        hits=hits+1;
+    } else {
+        changeClassName(element);
+    }
+
     if(spins<2*hits&&hits<spins){
+        //wins=true;
         over_half=true;
     } else{
         //wins=false;
@@ -31,6 +55,33 @@ function resetClassName(element) {
     win_span.innerHTML = over_half;
     hits_span.innerHTML = hits;
     hit_spin_span.innerHTML=(hits/spins).toFixed(2);
+    // -- Winning progress depends on hits/spins
+    let hits_spins_ratio = hits/spins;
+    let progress;
+    /*if ( hits_spins_ratio > 0 ) {
+        progress = 'On your way!';
+        if ( hits_spins_ratio >= 0.25 ) {
+            progress = 'Almost there!';
+            if ( hits_spins_ratio >= 0.5 ) {
+                if( hits < spins) { 
+                    progress = 'You win!';
+                }
+            }
+        }
+    }
+    else {
+        progress = 'Get going!' ;
+    }*/
+    if (hits_spins_ratio >= 0.5 && hits<spins) {
+            progress = 'You win!';
+    } else if (hits_spins_ratio >= 0.25) {
+        progress = 'Almost there!';
+    } else if (hits_spins_ratio > 0) {
+        progress = 'On your way!';
+    } else {
+        progress = 'Get going!';
+    }
+    win_span.innerHTML = progress;
 }
 
 //hits and spins
