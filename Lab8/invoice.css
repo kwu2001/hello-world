@@ -1,0 +1,45 @@
+/* styles.css */
+  th:nth-child(1), td:nth-child(1) {
+    width: 43%;
+  }
+  
+  th:nth-child(2), td:nth-child(2) {
+    width: 11%;
+  }
+  
+  th:nth-child(3), td:nth-child(3) {
+    width: 13%;
+  }
+  
+  th:nth-child(4), td:nth-child(4) {
+    width: 54%;
+  }
+  
+  th, td {
+    text-align: center;
+    border: 2px solid black; 
+  }
+
+/* Empty Row */ 
+  tr.empty-row {
+    width: 100%;
+  }
+
+
+/* footer: subtotal, tax, total */
+  tr.subtotal-row td {
+    text-align: center;
+    width: 67%;
+  }
+  
+  tr.tax-row td {
+    text-align: center;
+    width: 67%;
+    font-family: Arial;
+  }
+  
+  tr.total-row td {
+    text-align: center;
+    width: 67%;
+  }
+  
