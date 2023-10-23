@@ -1,4 +1,4 @@
-let quantity = [2, 1, 1, 3, 12]
+let quantity = [2, "cat", 1.5, -1.5, 0]
 
 let itemData = [
     {
@@ -22,7 +22,7 @@ let itemData = [
         quantityIndex: 3,
     },
     {
-        brand: 'Colgate Classic Toothbrushr',
+        brand: 'Colgate Classic Toothbrush',
         price: 1.89,
         quantityIndex: 4,
     },
