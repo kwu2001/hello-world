@@ -94,31 +94,31 @@ spins_span.innerHTML = spins;
 
 // Define the products array
    let product1 = { 
-    brand: "HTC",
+    name: "HTC",
     price: 40.00,
     image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/HTC.jpg"
   };
   
   let product2 = { 
-    brand: "Apple",
+    name: "Apple",
     price: 75.00,
     image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/iphone-3gs.jpg"
   };
   
   let product3 = { 
-    brand: "Nokia",
+    name: "Nokia",
     price: 35.00,
     image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/Nokia.jpg"
   };
   
   let product4 = { 
-    brand: "Samsung",
+    name: "Samsung",
     price: 45.00,
     image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/Samsung.jpg"
   };
   
   let product5 = { 
-    brand: "Blackberry",
+    name: "Blackberry",
     price: 10.00,
     image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/Blackberry.jpg"
   };
@@ -126,7 +126,7 @@ spins_span.innerHTML = spins;
   //product objects
   let products = [product1, product2, product3, product4, product5];
   
-// Loop 
+/* Loop 
 for (let i = 0; i < products.length; i++) {
     let product = products[i];
     let main = document.querySelector('.main');
@@ -176,8 +176,52 @@ for (let i = 0; i < products.length; i++) {
     section.appendChild(quantityDiv);
     main.appendChild(section);
 }
+*/
+/* Loop 
+for (let i = 0; i < products.length; i++) {
+    let product = products[i];
+    let main = document.querySelector('.main');
+  
+    let section = document.createElement('section');
+    section.className = 'item';
+    section.addEventListener('mouseover', function() {
+      changeClassName(this);
+    });
+    section.addEventListener('click', function() {
+      resetClassName(this);
+    });
 
   
+    let h2 = document.createElement('h2');
+    h2.textContent = product.brand;
+  
+    let p = document.createElement('p');
+    p.textContent = `$${product.price}`;
+  
+    let img = document.createElement('img');
+    img.src = product.image;
+  
+    section.appendChild(h2);
+    section.appendChild(p);
+    section.appendChild(img);
+    main.appendChild(section);
+  }
+*/
+
+// Loop
+for (let i = 0; i < products.length; i++) {
+    const product = products[i];
+    document.querySelector('.main').innerHTML += `
+        <section class="item" onmouseover="changeClassName(this);" onclick="resetClassName(this);">
+            <h2>${product.name}</h2>
+            <p>$${product.price}</p>
+            <img src="${product.image}" />
+            <br> <!-- Add the line break here -->
+            <label id="quantity${i}_label" for="quantity${i}">Quantity Desired</label>
+            <input type="text" name="quantity${i}" id="quantity${i}">
+        </section>`;
+}
+
 
 //footer
 let line = 1;

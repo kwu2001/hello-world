@@ -13,7 +13,7 @@ for (let i = 0; i < itemData.length; i++) {
 /*
 Invoice product sales data
 */
-import { itemData, quantity } from "./products_data.js";
+import { itemData } from "./products_data.js";
 let subtotal = 0;
 let tax_rate = 0.0575;
 let taxAmount = 0;
