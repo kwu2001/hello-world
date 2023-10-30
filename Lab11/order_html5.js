@@ -7,9 +7,9 @@ function forSubmission() {
         document.getElementById("invalidQuantity").innerHTML = validationMessage;
     } else {
         //redirect to the html page
-        //window.location.href = `display_purchase.html?qty_textbox=${quantity}`;
-        let message = `Thank you for ordering ${quantity} things!`;
-        document.body.innerHTML = message;
+        window.location.href = `display_purchase.html?qty_textbox=${quantity}`;
+        //let message = `Thank you for ordering ${quantity} things!`;
+        //document.body.innerHTML = message;
     }
     return false; //prevent form from submitting
 }

@@ -6,12 +6,16 @@
     <title>Order Page</title>
 </head>
 <body>
-    <label for="qty_textbook">Quantity Desired</label>
-    <input type="text" id="qty_textbook" onkeyup="updateQuantityMessage(this)">
-    <span id="qty_textbook_message">Enter a Quantity</span>
-   
-    <br><br>
-    <input type="submit" value="Purchase"> 
-    <script src="order_html3.js"></script>
+    <form name="qty_form" action="" method="GET" onsubmit="return forSubmission()">
+        <label for="qty_textbook">Quantity Desired:</label>
+        <input type="text" name="qty_textbox">
+        <span id="qty_textbook_message">Enter a Quantity</span>
+    
+        <br>
+        <input type="submit" value="Purchase">
+    </form>
+    <br>
+    <div id="invalidQuantity"></div>
+    <script src="order_html4.js"></script>
 </body>
 </html>
