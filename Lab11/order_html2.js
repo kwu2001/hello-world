@@ -1,5 +1,5 @@
 function updateQuantityMessage(textbox) {
-    let quantityMessage=document.getElementById('qty_textbook_message');
+    let quantityMessage=document.getElementById('qty_textbox_message');
     let validationMessage = validateQuantity(Number(textbox.value));
 
     if (validationMessage !=="") {
