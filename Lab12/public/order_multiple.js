@@ -15,12 +15,13 @@ window.onload = function () {
 
     //write a loop to print the product information and then add a quantity text input box for every element of the product array
     for (let i in products) {
-        formHTML += `<h3>${products[i]["brand"]} at \$${products[i]["price"]} (${products[i]["total_sold"]}sold)</h3>`;
+        formHTML += `<h3>${products[i]["brand"]} at \$${products[i]["price"]} (${products[i]["total_sold"]} sold)</h3>`;
         formHTML += `
         <label for="quantity_textbox_${i}">Quantity desired:</label>
         <input type="text" id="quantity_textbox_${i}" name="quantity_textbox[${i}]" onkeyup="checkQuantityTextbox(this);"><span id="quantity_textbox[${i}]_message">Enter a quantity</span><br>
         `;
     }
+    
     //ensure the submit button is part of the form
     formHTML+= `<br> <input type="submit" value="Purchase">`;
     //push form content to DOM
@@ -32,6 +33,7 @@ function checkQuantityTextbox(theTextbox) {
     document.getElementById(theTextbox.name + '_message').innerHTML = errs;
 }
 
+//add validateQuantity
 function validateQuantity(quantity) {
     let errorMessage = "";
 
