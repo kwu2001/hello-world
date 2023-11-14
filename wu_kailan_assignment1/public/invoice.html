@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Receipt</title>
+    <script src="./product_data.js"></script>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="styles.css" rel="stylesheet" />
+    <link href="receipt.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Navigation Bar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#!">PORSCHE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="products_display.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">Models</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="products_display.html">All Models</a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><a class="dropdown-item" href="#!">Popular Items</a></li>
+                            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Receipt -->
+    <script>
+        params = (new URL(document.location)).searchParams;
+
+        // Quantities array
+        let quantities = [];
+
+        for (i in products) {
+            if (params.has(`quantity${i}`)) {
+                a_qty = params.get(`quantity${i}`);
+                quantities[i] = a_qty;
+            }
+        }
+
+        function isNonNegIntCheck(input, returnErrors = false) {
+            let errors = [];
+            if (Number(input) != input) errors.push('Not a number!');
+            if (input < 0) errors.push('Negative value!');
+            if (parseInt(input) != input) errors.push('Not an integer!');
+            return returnErrors ? errors : (errors.length == 0);
+        }
+
+        function generate_item_rows(products, product_quantities_array) {
+            for (let i in product_quantities_array) {
+                errors = isNonNegIntCheck(product_quantities_array[i], true);
+                if (errors.length == 0) {
+                    extended_price = product_quantities_array[i] * products[i].price
+                    errorMessage = "";
+                } else {
+                    extended_price = 0 * products[i].price
+                    errorMessage = errors.join('<br>');
+                }
+
+                if ((product_quantities_array[i]) == 0) {
+                    continue;
+                }
+
+                document.write(`
+                    <tr>
+                      <td width="43%">
+                    <img src="${products[i].image}" alt="${products[i].item} icon" title="${products[i].description}" style="max-width: 100px; max-height: 100px; margin-right: 5px;" />
+                    ${products[i].item}
+                </td>
+                        <td align="center" width="11%">${product_quantities_array[i]} <div style="color:red;">${errorMessage}</div> </td>
+                        <td width="13%">$${products[i].price}</td>
+                        <td width="54%">$${extended_price}</td>
+                    </tr>
+                `);
+                subtotal += extended_price
+            }
+        }
+    </script>
+    <script>
+        // Overall subtotal
+        let subtotal = 0;
+    </script>
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div>
+            <table border="2">
+                <tbody>
+                    <tr>
+                        <th style="text-align: center;" width="43%">Model(s)</th>
+                        <th style="text-align: center;" width="11%">Quantity Chosen</th>
+                        <th style="text-align: center;" width="13%">Price</th>
+                        <th style="text-align: center;" width="54%">Toal for Each Model</th>
+                    </tr>
+                    <script>
+                        generateRows = (generate_item_rows(products, quantities))
+                    </script>
+
+                    <script>
+                        // Compute tax
+                        let tax_rate = 0.0575;
+                        let tax = tax_rate * subtotal;
+
+                        // Compute shipping
+                        if (subtotal <= 100000) {
+                            shipping = 4000;
+                        } else if (subtotal <= 500000) {
+                            shipping = 0;
+                        } else {
+                            shipping = 0 * subtotal; // 5% (shipping fee) for subtotal of $100 or more
+                        }
+
+                        // Grandtotal
+                        let total = tax + subtotal + shipping;
+
+                    </script>
+                    <tr>
+                        <td colspan="4" width="100%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;" colspan="3" width="67%">Sub-total</td>
+                        <td width="54%">$
+                            <script>document.write(subtotal);</script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;" colspan="3" width="67%"><span style="font-family: arial;">Tax @
+                                <script>document.write(100 * tax_rate)</script>%
+                            </span></td>
+                        <td width="54%">$
+                            <script>document.write(tax.toFixed(2));</script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;" colspan="3" width="67%">Shipping</td>
+                        <td width="54%">$
+                            <script>document.write(shipping.toFixed(2));</script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;" colspan="3" width="67%"><strong>Total</strong></td>
+                        <td width="54%"><strong>$
+                                <script>document.write(total.toFixed(2));</script>
+                            </strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="text-align: center;">
+                <b>
+                    <br>
+                    SHIPPING POLICY: If the total cost is under $100,000. The shipping fee will be $4,000.
+                    <br>
+                    But if the total cost is over $500,000. The shipping fee is free
+                </b>
+            </div>
+        </div>
+    </body>
+
+    </html>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+</body>
+
+</html>

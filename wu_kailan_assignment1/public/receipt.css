@@ -1,0 +1,142 @@
+
+/*
+CSS help with chatgpt
+
+*/
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Flexible columns */
+  grid-auto-rows: minmax(300px, auto); /* Set minimum row height to 300px */
+  gap: 20px; /* Add a gap between each item */
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px; /* Add rounded edges */
+  background-color:#add8e6;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+  }
+
+
+.item img {
+  max-width: 100%;
+  max-height: 250px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+header {
+  text-align: center;
+  font-size: 30px; /* Change this to the font size you want */
+  padding: 20px; /* Change this to adjust the top/bottom and left/right padding */
+}
+
+
+.title {
+  margin: 0; /* Remove default margin to prevent extra space */
+}
+
+nav {
+  padding: 10px;
+}
+
+ul {
+  list-style-type: none; /* Remove bullet points */
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+li {
+  margin-right: 10px;
+}
+
+a {
+  display: block;
+  background-color: #ccc;
+  padding: 10px;
+  border-radius: 10px; /* Add rounded corners to the boxes */
+  text-decoration: none;
+  color: #000;
+}
+
+a:hover {
+  background-color: #aaa; /* Change background color when hovering */
+}
+
+#purchase_button {
+  background-color: lightblue;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+#purchase_button:hover {
+  background-color: blue;
+  color: white;
+}
+
+h1, h2, h3 {
+  font-family: 'Cute Font', cursive;
+}
+
+body {
+  background-image: url('images/cloud-image.jpg');
+  background-size: cover;
+}
+
+table {
+  border-collapse: collapse;
+  border: none;
+}
+
+table td, table th {
+  border: none;
+  text-align: center;
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: #f2f2f2;
+
+}
+
+/* Footer styles */
+footer {
+  text-align: center;
+  padding: 10px;
+}
+
+table tr:first-child td,
+table tr:first-child th {
+  border-bottom: 1px solid black;
+}
+
+table {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 8px;
+  border: 1px solid black;
+}
+
+tr:first-child {
+  background-color: grey;
+  color: black;
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "item": "718 Spyder RS",
+    "price": 16000.00,
+    "image": "images/porsche-spyder.png",
+    "quantity_available": 100,
+    "quantity_sold": 0,
+    "description": "Fast and Furious"
+  },
+  {
+    "item": "911 GT3",
+    "price": 18200.00,
+    "image": "images/porsche-911.png",
+    "quantity_available": 100,
+    "quantity_sold": 0
+  
+  },
+  {
+    "item": "Taycan Turbo S",
+    "price": 19490.00,
+    "image": "images/porsche-taycan.png",
+    "quantity_available": 100,
+    "quantity_sold": 0
+    
+  },
+  {
+    "item": "Panamera GTS",
+    "price": 13520.00,
+    "image": "images/porsche-panamera.png",
+    "quantity_available": 100,
+    "quantity_sold": 0
+    
+  },
+  {
+    "item": "Cayenne Turbo GT",
+    "price": 19630.00,
+    "image": "images/porsche-cayene.png",
+    "quantity_available": 100,
+    "quantity_sold": 0
+    
+  }
+]
