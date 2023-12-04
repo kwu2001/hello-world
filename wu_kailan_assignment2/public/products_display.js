@@ -36,7 +36,7 @@ for (let i in products) {
     }
 
     //If quantity unavailable error, update textbox, error message, and purchase button text
-                    // IR 3: change textbox to red if requested quantity is more than whats available, and also text.
+                    // change textbox to red if requested quantity is more than whats available, and also text.
                     if (errorsObject[`quantity${i}_available_error`]) {
                         const errorMessage = errorsObject[`quantity${i}_available_error`];
                         qtyTextbox.style.border = "2px solid red";

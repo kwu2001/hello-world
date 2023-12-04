@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Porsche Login</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="login.css">
+    <script src="./product_data.js"></script>
+
+        <!-- login section-->
+</head>
+<body class="body-custom">
+  <div class="login-container">
+    <h2>Login to Porsche</h2>
+    <form action="/process_login" method="POST" name="login_form">
+      <input type="text" placeholder="Email" id="email" name="email" autocomplete="off"><br>
+      <input type="password" placeholder="Password" name="password" id="password" autocomplete="off"><br>
+      <button type="submit" id="button" onclick="login_form.action='/process_login'">Sign in</button>
+    </form>
+    <!-- Error message placed below the form -->
+    <h4 id="errorMsg" style="color: red;"></h4>
+    <p>Don't Have an account? 
+      <button type="button" onclick="location.href='/register.html'">Sign Up</button>
+    </p>
+  </div>
+  <script src="login.js"></script>
+</body>
+</html>

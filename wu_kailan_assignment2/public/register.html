@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Registration</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'>
+  <link rel="stylesheet" href="register.css">
+  
+  <script src="./product_data.js"></script>
+  <script>
+    let params = (new URL(document.location)).searchParams;
+
+// When the window loads, perform the following function:
+window.onload = function() {
+  // If there is an error, make name and email box sticky 
+  register_form['name'].value = params.get('name');
+  register_form['email'].value = params.get('email');
+
+  // Display error messages where they occur
+  for (let i = 0; i <= document.getElementsByClassName('err').length; i++) {
+      if (params.has(`${register_form[i].name}_length`)) {
+          document.getElementById(`${register_form[i].name}_Err`).innerHTML = params.get(`${register_form[i].name}_length`);
+          register_form['register'].value = "Continue"; // Change button text to Continue
+          if (params.has(`${register_form[i].name}_Type`)) {
+              document.getElementById(`${register_form[i].name}_Err`).innerHTML = params.get(`${register_form[i].name}_length`) + `<br>` + params.get(`${register_form[i].name}_char`);
+                  register_form['register'].value = "Continue";
+          }
+      }
+      else if (params.has(`${register_form[i].name}_char`)) {
+          document.getElementById(`${register_form[i].name}_Err`).innerHTML = params.get(`${register_form[i].name}_char`);
+          register_form['register'].value = "Continue";
+      }
+  }
+
+}
+
+
+
+  </script>
+</head>
+
+<body>
+  <!-- partial:index.partial.html -->
+  <div class="login-form">
+    <form action="/process_register" method="POST" name="register_form">
+      <h1>Create an Account</h1>
+      <div class="content">
+          <div class="input-field">
+              <input type="name" placeholder="Name" id="name" name="name" autocomplete="off">
+            </div>
+            <p class="err" id="name_Err"></p>
+        <div class="input-field">
+          <input type="email" placeholder="Email" id="email" name="email" autocomplete="off">
+        </div>
+        <p class="err" id="email_Err"></p>
+        <div class="input-field">
+          <input type="password" placeholder="Password" id="password" name="password" autocomplete="off">
+          <p class="err" id="password_Err"></p>
+        </div>
+        <div class="input-field">
+          <input type="password" placeholder="Re-type Password" id="con_password" name="con_password" autocomplete="off">
+          <p class="err" id="con_password_Err"></p>
+        </div>
+      </div>
+      <div class="action">
+        <button type="submit" id="button" value="register" name="register" onclick="register_form.action='/process_register'">Register</button>
+      </div>
+  </div>
+</body>
+</form>
+
+
+</html>
